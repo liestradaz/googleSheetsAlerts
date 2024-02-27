@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 
 app.post('/supertrendAlerts', (req, res) => {
     // Handle webhook from TradingView
-    //const message = req.body.message;
-    const message = 'test3';
+    const message = req.body.message;
+
 
     // Send message to Telegram
     bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);

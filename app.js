@@ -13,6 +13,8 @@ app.use(bodyParser.json());
 
 app.post('/supertrendAlerts', (req, res) => {
     // Handle webhook from TradingView
+    console.log('req',req)
+
     const message = req.body.message;
 
 

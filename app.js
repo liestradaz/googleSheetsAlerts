@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.post('/supertrendAlerts', (req, res) => {
     // Handle webhook from TradingView
     //const message = req.body.message;
-    const message = 'hol';
+    const message = 'test3';
 
     // Send message to Telegram
     bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
@@ -25,3 +25,5 @@ app.post('/supertrendAlerts', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+

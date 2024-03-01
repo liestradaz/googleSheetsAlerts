@@ -3,6 +3,7 @@ var express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const TelegramBot = require('node-telegram-bot-api');
+const cron = require('./cron');
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -24,6 +25,11 @@ app.post('/supertrendAlerts', (req, res) => {
     bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
 
     res.status(200).send('Message sent to Telegram');
+
+});
+
+app.get('/health', (req, res) => {
+    res.status(200).send('Server is up and running');
 });
 
 app.listen(port, () => {

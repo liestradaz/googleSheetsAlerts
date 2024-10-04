@@ -18,8 +18,7 @@ app.use(bodyParser.json());
 
 app.post('/cerveceros', (req, res) => {
     // Handle webhook from TradingView
-    console.log('req',req)
-    const message = req.body;
+    const message = JSON.stringify(req.body.data)
     console.log('Message: ', message)
 
     // Send message to Telegram

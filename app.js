@@ -16,7 +16,7 @@ app.use(morgan('combined'));
 
 app.use(bodyParser.json());
 
-app.post('/supertrendAlerts', (req, res) => {
+app.post('/cerveceros', (req, res) => {
     // Handle webhook from TradingView
     const message = req.body.message;
     console.log('Message: ', message)

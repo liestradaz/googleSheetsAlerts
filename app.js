@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const TelegramBot = require('node-telegram-bot-api');
 const cron = require('./cron');
+const { parseBetMessage } = require('./Services/messageParser');
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -18,11 +19,13 @@ app.use(bodyParser.json());
 
 app.post('/cerveceros', (req, res) => {
     // Handle webhook from TradingView
-    const message = JSON.stringify(req.body.data)
-    console.log('Message: ', message)
+    const data = req.body.data
+    console.log('data: ', JSON.stringify(data))
+    
+    const message = parseBetMessage(data)
 
     // Send message to Telegram
-    bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message);
+    bot.sendMessage(process.env.TELEGRAM_CHAT_ID, message, { parse_mode: 'HTML' });
 
     res.status(200).send('Message sent to Telegram');
 
